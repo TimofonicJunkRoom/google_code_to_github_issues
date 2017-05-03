@@ -14,9 +14,9 @@ Imported from [Google Code issue [% issue %]]([% url %]) via [archive]([% archiv
 * **Status**:    [% meta.Status %]
 * **Labels**:    [% meta.Labels.join(', ') %]
 
-[% IF comments %]
+[% IF comments.size -%]
 ### Comments
-[% FOREACH comment = comments %]
+[% FOREACH comment = comments -%]
 **[% comment.author %]** commented on [% comment.date %] <!-- [% comment.date_long %] -->:
 
 <pre>
@@ -27,5 +27,4 @@ Imported from [Google Code issue [% issue %]]([% url %]) via [archive]([% archiv
 * [% inner.key %] : [% inner.value %]
 [% END %]
 ----
-[% END %]
-[% END %]
+[% END %][% END %]

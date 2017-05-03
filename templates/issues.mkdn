@@ -1,0 +1,3 @@
+[% FOREACH issue issues %]
+  [% INCLUDE "issue.mkdn" %]
+[% END %]

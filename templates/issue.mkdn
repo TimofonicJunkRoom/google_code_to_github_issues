@@ -1,0 +1,31 @@
+[% description.reporter %] reported on [% description.date.date %] <!-- [% description.date.timestamp %] -->
+
+[% description.description %]
+
+### Details
+
+Imported from [Google Code issue [% issue %]]([% url %]) via [archive]([% archive_url %])
+
+* **Type**:      [% meta.Type %]
+* **Date**:      [% description.date.date %]
+* **Reporter**:  [% description.reporter %]
+* **Owner**:     [% meta.Owner %]
+* **Priority**:  [% meta.Priority %]
+* **Status**:    [% meta.Status %]
+* **Labels**:    [% meta.Labels.join(', ') %]
+
+[% IF comments %]
+### Comments
+[% FOREACH comment = comments %]
+**[% comment.author %]** commented on [% comment.date %] <!-- [% comment.date_long %] -->:
+
+<pre>
+[% comment.comment %]
+</pre>
+
+[% FOREACH inner = comment.inner %]
+* [% inner.key %] : [% inner.value %]
+[% END %]
+----
+[% END %]
+[% END %]

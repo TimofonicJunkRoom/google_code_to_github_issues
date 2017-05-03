@@ -18,7 +18,7 @@ sub main {
   my (@files) = @_;
 
   my @issues = map { parse_ticket_file($_) } @files;
-  print encode('UTF-8', Dump(@issues));
+  print encode('UTF-8', Dump({issues => \@issues}));
 }
 
 

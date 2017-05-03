@@ -15,7 +15,7 @@
     % tt-render --path=templates/ --data=issues.yaml issues.mkdn
 
     # render body for github issues
-    % bin/render_github_issue_template < issues.yaml > issues_with_data.yaml
+    % bin/render_github_issue_template.pl < issues.yaml > issues_with_data.yaml
 
     # create github issues from yaml
 

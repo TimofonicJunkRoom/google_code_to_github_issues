@@ -7,6 +7,7 @@ use warnings;
 use Mojo::DOM;
 use Mojo::File;
 use YAML qw(Dump);
+use Encode qw(encode decode);
 
 #my $base = "file://home/andrew/src/ZipRecruiter/WWW-Mechanize/code.google";
 my $file = "2015/102";
@@ -17,7 +18,7 @@ sub main {
   my (@files) = @_;
 
   my @issues = map { parse_ticket_file($_) } @files;
-  print Dump(@issues);
+  print encode('UTF-8', Dump(@issues));
 }
 
 
@@ -31,7 +32,7 @@ sub parse_ticket_file {
   my $archive_url = $base_issue_url_archive . $issue;
 
   my $path = Mojo::File->new($file);
-  my $html = $path->slurp();
+  my $html = decode('UTF-8', $path->slurp());
   my $dom  = Mojo::DOM->new($html);
 
   my $header      = get_header($dom);

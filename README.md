@@ -11,13 +11,19 @@
     # scrape individual pages and extract issue data
     % (cd issues; ../bin/parse_google_code_issues_to_yaml.pl $(ls | sort -n) > ../issues.yaml)
 
-    # manually render templates with tt-render:
+    # optional: manually render templates with tt-render:
     % tt-render --path=templates/ --data=issues.yaml issues.mkdn
 
     # render body for github issues
-    % bin/render_github_issue_template.pl < issues.yaml > issues_with_data.yaml
+    % bin/render_github_issue_template.pl < issues.yaml > issues-with-data.yaml
+
+    # create a github oath key
+    % export GITHUB_TOKEN=$(GITHUB_USER=spazm GITHUB_PASSWD=foo bin/make_github_token.pl)
 
     # create github issues from yaml
+    % bin/post_github_issue.pl render_github_issue_template.pl < issues-with-data.yaml > issues-with-new-issue.yaml
+
+
 
 # ABOUT
 
